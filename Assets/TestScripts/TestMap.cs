@@ -279,8 +279,8 @@ public class TestMap : MonoBehaviour
 
         // create some test 2D markers
 		GameObject go = TileBehaviour.CreateTileTemplate(TileBehaviour.AnchorPoint.BottomCenter).gameObject;
-		go.renderer.material.mainTexture = MarkerTexture;
-		go.renderer.material.renderQueue = 4001;
+		go.GetComponent<Renderer>().material.mainTexture = MarkerTexture;
+		go.GetComponent<Renderer>().material.renderQueue = 4001;
 		go.transform.localScale = new Vector3(0.70588235294118f, 1.0f, 1.0f);
 		go.transform.localScale /= 7.0f;
         go.AddComponent<CameraFacingBillboard>().Axis = Vector3.up;
@@ -297,10 +297,12 @@ public class TestMap : MonoBehaviour
 
 		DestroyImmediate(go);
 		
+		//Debug.Log ("Got here.");
+		
 		// create the location marker
 		go = TileBehaviour.CreateTileTemplate().gameObject;
-		go.renderer.material.mainTexture = LocationTexture;
-		go.renderer.material.renderQueue = 4000;
+		go.GetComponent<Renderer>().material.mainTexture = LocationTexture;
+		go.GetComponent<Renderer>().material.renderQueue = 4000;
 		go.transform.localScale /= 27.0f;
 		
 		markerGO = Instantiate(go) as GameObject;
